@@ -1,3 +1,4 @@
+
 @extends('layout')
 
 @section('title', 'Usuarios')
@@ -8,7 +9,7 @@
         <a href="{{ route('users.create') }}" class="btn btn-primary">Nuevo usuario</a>
     </p>
 
-    @include('users._filters')
+    @includeWhen(isset($states), 'users._filters')
 
     @if( $users->count() )
         <div class="table-responsive-lg">
@@ -24,7 +25,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @each('users._row', $users, 'user')
+                @each('users._row', $users, 'user')
                 </tbody>
             </table>
             {{ $users->links() }}
