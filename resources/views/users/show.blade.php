@@ -7,6 +7,8 @@
 
     <p>Mostrando detalles del usuario: {{ $user->name }}</p>
 
+    <p>Biografia: {{ $user->profile->bio }}</p>
+
     <p>
         <a href="{{ route('users.index') }}">Regresar al listado de usuarios</a>
     </p>
