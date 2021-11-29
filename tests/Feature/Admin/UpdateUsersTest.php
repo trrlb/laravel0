@@ -106,7 +106,6 @@ class UpdateUsersTest extends TestCase
 
         $this->assertDatabaseMissing('users', ['email' => 'pepe@mail.es']);
     }
-
     /** @test */
     public function the_last_name_is_required()
     {
@@ -122,6 +121,7 @@ class UpdateUsersTest extends TestCase
 
         $this->assertDatabaseMissing('users', ['email' => 'pepe@mail.es']);
     }
+
 
     /** @test */
     public function the_email_is_required()

@@ -1,3 +1,4 @@
+
 @extends('layout')
 
 @section('title', 'Usuarios')
@@ -24,7 +25,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @each('users._row', $users, 'user')
+                @each('users._row', $users, 'user')
                 </tbody>
             </table>
             {{ $users->links() }}

@@ -132,7 +132,6 @@ class CreateUsersTest extends TestCase
 
         $this->assertDatabaseEmpty('users');
     }
-
     /** @test */
     public function the_last_name_is_required()
     {
@@ -141,7 +140,7 @@ class CreateUsersTest extends TestCase
         $this->from('usuarios/crear')
             ->post('usuarios', $this->withData([
                 'last_name' => ''
-            ]))->assertSessionHasErrors(['last_name' => 'El campo apellidos es obligatorio']);
+            ]))->assertSessionHasErrors(['last_name' => 'El campo apellido es obligatorio']);
 
         $this->assertDatabaseEmpty('users');
     }
@@ -205,7 +204,6 @@ class CreateUsersTest extends TestCase
 
         $this->assertCredentials([
             'first_name' => 'Pepe',
-            'last_name' => 'Pérez',
             'email' => 'pepe@mail.es',
             'password' => '123456',
         ]);

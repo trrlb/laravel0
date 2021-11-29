@@ -29,6 +29,7 @@ class SearchUsersTest extends TestCase
             });
     }
 
+
     /** @test */
     public function partial_search_by_first_name()
     {
@@ -45,13 +46,13 @@ class SearchUsersTest extends TestCase
                 return $users->contains($joel) && ! $users->contains($ellie);
             });
     }
-
     /** @test */
     public function search_users_by_full_name()
     {
+
         $joel = factory(User::class)->create([
             'first_name' => 'Joel',
-            'last_name' => 'Miller',
+            'last_name' => 'Miller'
         ]);
         $ellie = factory(User::class)->create([
             'first_name' => 'Ellie',
@@ -65,12 +66,14 @@ class SearchUsersTest extends TestCase
             });
     }
 
+
     /** @test */
     public function partial_search_by_full_name()
     {
+
         $joel = factory(User::class)->create([
             'first_name' => 'Joel',
-            'last_name' => 'Miller',
+            'last_name' => 'Miller'
         ]);
         $ellie = factory(User::class)->create([
             'first_name' => 'Ellie',
@@ -141,9 +144,9 @@ class SearchUsersTest extends TestCase
             ->assertStatus(200);
 
         $response->assertViewCollection('users')
-                ->contains($marlene)
-                ->notContains($joel)
-                ->notContains($ellie);
+            ->contains($marlene)
+            ->notContains($joel)
+            ->notContains($ellie);
     }
 
     /** @test */

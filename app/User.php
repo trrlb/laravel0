@@ -61,17 +61,22 @@ class User extends Authenticatable
         if (empty($search)) {
             return;
         }
-
-        $query->whereRaw('CONCAT(first_name, " ", last_name) like ?', "%{$search}%")
+        $query->whereRaw('CONCAT(first_name, " ", last_name) LIKE ?', "%{$search}%")
             ->orWhere('email', 'LIKE', "%{$search}%")
-            ->orWhereHas('team', function ($query) use ($search) {
-                $query->where('name', 'LIKE', "%{$search}%");
+            ->orWhereHas('team',function ($query) use ($search){
+                $query->where('name', 'LIKE',"%{$search}%");
             });
-
     }
 
     public function getNameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function scopeByState($query, $state)
+    {
+        if ($state == 'active') {
+            return $query;
+        }
     }
 }

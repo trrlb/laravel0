@@ -29,7 +29,7 @@ class CreateUserRequest extends FormRequest
     {
         return [
             'first_name' => 'required',
-            'last_name' => 'required',
+            'last_name' =>'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
             'role' => [
@@ -53,7 +53,7 @@ class CreateUserRequest extends FormRequest
     {
         return [
             'first_name.required' => 'El campo nombre es obligatorio',
-            'last_name.required' => 'El campo apellidos es obligatorio',
+            'last_name.required' => 'El campo apellido es obligatorio',
             'email.required' => 'El campo email es obligatorio',
             'password.required' => 'El campo contraseña es obligatorio',
             'email.unique' => 'Ese email ya existe en la BD',

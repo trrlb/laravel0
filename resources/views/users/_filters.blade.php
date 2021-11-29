@@ -2,11 +2,11 @@
     <div class="row row-filters">
         <div class="col-12">
             @foreach(['' => 'Todos', 'with_team' => 'Con equipo', 'without_team' => 'Sin equipo'] as $value => $text)
-            <div class="form-check form-check-inline">
-                <input type="radio" class="form-check-input" name="team" id="team_{{ $value ?: 'all' }}"
-                       value="{{ $value }}" {{ $value === request('team', '') ? 'checked' : '' }}>
-                <label class="form-check-label" for="team_{{ $value ?: 'all' }}">{{ $text }}</label>
-            </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="team" id="team_{{ $value ?: 'all' }}"
+                           value="{{ $value }}" {{ $value === request('team', '') ? 'checked' : '' }}>
+                    <label class="form-check-label" for="team_{{ $value ?: 'all' }}">{{ $text }}</label>
+                </div>
             @endforeach
         </div>
     </div>
@@ -45,7 +45,7 @@
                             <div class="form-group form-check">
                                 <input name="skill[]" type="checkbox" class="form-check-input"
                                        id="skill_{{ $skill->id }}" value="{{ $skill->id }}"
-                                       {{ $checkedSkills->contains($skill->id) ? 'checked' : '' }}>
+                                        {{ $checkedSkills->contains($skill->id) ? 'checked' : '' }}>
                                 <label class="form-check-label" for="skill_{{ $skill->id }}">{{ $skill->name }}</label>
                             </div>
                         @endforeach
