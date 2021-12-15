@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Admin;
 
-use App\Profession;
 use App\Team;
 use App\User;
 use Tests\TestCase;

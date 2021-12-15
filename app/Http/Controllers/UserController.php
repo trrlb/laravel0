@@ -26,8 +26,11 @@ class UserController extends Controller
                     $query->doesntHave('team');
                 }
             })
-            ->filterBy($userFilter, request()->only(['state', 'role', 'search', 'skills', 'from', 'to']))
-            ->orderBy('created_at', 'DESC')
+            ->filterBy($userFilter, array_merge(
+                ['trashed' => request()->routeIs('users.trashed')],
+                request()->only(['state', 'role', 'search', 'skills', 'from', 'to', 'order', 'direction'])
+            ))
+            ->orderByDesc('created_at')
             ->paginate();
 
         $users->appends($userFilter->valid());
@@ -36,20 +39,10 @@ class UserController extends Controller
 
         return view('users.index', [
             'users' => $users,
-            'view' => 'index',
+            'view' => request()->routeIs('users.trashed') ? 'trash' : 'index',
             'skills' => Skill::orderBy('name')->get(),
             'checkedSkills' => collect(request('skills')),
-            'sortable' => $sortable,
-        ]);
-    }
-
-    public function trashed()
-    {
-        $users = User::onlyTrashed()->paginate();
-
-        return view('users.index', [
-            'users' => $users,
-            'view' => 'trash',
+            'sortable' => $sortable
         ]);
     }
 
